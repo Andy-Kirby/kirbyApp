@@ -1,52 +1,69 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    TextInput, 
+    TouchableWithoutFeedback, 
+    Keyboard, 
+    Dimensions, 
+    ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Map from '../components/map.js';
 
 
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
+
 export default function Contact({ navigation }) {
     return (
-            <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss();}}>
+            <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss(); }}>
                 <View style={styles.modalContainer}>
-                    <MaterialIcons style={styles.burger}
+                    <MaterialIcons 
+                        style={styles.burger}
                         name="menu"
                         size={24}
                         color="#b3b3b3"
                         onPress={() => navigation.toggleDrawer()}
                     />
-                    <View style={styles.mainHeader}>
-                        <Text style={styles.modalHeader}>FIND US</Text>
-                    </View>
-                    <View style={styles.map}>
-                        <Map />
-                    </View>
-                    <Text style={[styles.modalHeader,{ marginLeft: 57, marginTop: 25, marginBottom: 10 }]}>CONTACT US</Text>
-                    <View style={styles.messageContainer}>
-                        <TextInput style={styles.message}
-                            placeholder="Name"
-                            placeholderTextColor="#cfcfcf"
-                            selectionColor="#fff"
-                            keyboardType="email-address"
-                        />
-                        <TextInput style={styles.message}
-                            placeholder="E-Mail"
-                            placeholderTextColor="#cfcfcf"
-                            selectionColor="#fff"
-                            keyboardType="email-address"
-                        />
-                        <TextInput style={styles.message}
-                            multiline={true}
-                            height= {150}
-                            placeholder="Message..."
-                            placeholderTextColor="#cfcfcf"
-                            selectionColor="#fff"
-                            keyboardType="email-address"
-                        />
-                        <Text style={styles.login}>SUBMIT</Text>
-                    </View>
+                    <ScrollView>
+                        <View style={styles.mainHeader}>
+                            <Text style={styles.modalHeader}>FIND US</Text>
+                        </View>
+                        <View style={styles.map}>
+                            <Map />
+                        </View>
+                        <Text style={[styles.modalHeader, { marginLeft: deviceWidth * 0.08, marginTop: 25, marginBottom: 10 }]}>CONTACT US</Text>
+                        <View style={styles.messageContainer}>
+                            <TextInput 
+                                style={styles.message}
+                                placeholder="Name"
+                                placeholderTextColor="#cfcfcf"
+                                selectionColor="#fff"
+                                keyboardType="email-address"
+                            />
+                            <TextInput 
+                                style={styles.message}
+                                placeholder="E-Mail"
+                                placeholderTextColor="#cfcfcf"
+                                selectionColor="#fff"
+                                keyboardType="email-address"
+                            />
+                            <TextInput 
+                                style={styles.message}
+                                multiline
+                                height={150}
+                                placeholder="Message..."
+                                placeholderTextColor="#cfcfcf"
+                                selectionColor="#fff"
+                                keyboardType="email-address"
+                            />
+                            <Text style={styles.login}>SUBMIT</Text>
+                        </View>
+                    </ScrollView>
                 </View>
             </TouchableWithoutFeedback>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -56,8 +73,9 @@ const styles = StyleSheet.create({
     },
 
     burger: {
-        marginTop: 60,
-        marginLeft: 55,
+        marginTop: deviceHeight * 0.05,
+        //marginLeft: 55,
+        marginLeft: deviceWidth * 0.07,
         marginBottom: 10,
     },
 
@@ -68,7 +86,8 @@ const styles = StyleSheet.create({
     
     modalHeader: {
         marginTop: 0,
-        marginLeft: 57,
+        //marginLeft: 57,
+        marginLeft: deviceWidth * 0.08,
         fontFamily: 'Teko',
         fontSize: 20,
         color: '#b3b3b3',
@@ -80,15 +99,21 @@ const styles = StyleSheet.create({
     map: {
         display: 'flex',
         alignItems: 'center',
+        marginLeft: deviceWidth * 0.08,
+        marginRight: deviceWidth * 0.08,
         marginTop: 15,
+        borderWidth: 4,
+        borderRadius: 6,
+        borderColor: 'grey',
+        overflow: 'hidden'
     },
 
     messageContainer: {
-        alignItems: "center",
+        alignItems: 'center',
     },
 
     message: {
-        width: 300,
+        width: deviceWidth * 0.84,
         paddingVertical: 8,
         backgroundColor: 'rgba(255, 255,255,0.2)',
         borderRadius: 25,

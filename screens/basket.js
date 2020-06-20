@@ -1,19 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default function Basket({ navigation }) {
     return (
         <View style={styles.container}>
-            <MaterialIcons style={styles.back}
+            <MaterialIcons 
+                style={styles.back}
                 name="arrow-back"
                 size={24}
                 color="#b3b3b3"
                 onPress={() => navigation.goBack()}
-                />
+            />
             <Text style={styles.text}>BASKET!</Text>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -24,18 +28,19 @@ const styles = StyleSheet.create({
     },
 
     back: {
-        marginTop: 60,
-        marginLeft: 55,
+        marginTop: deviceHeight * 0.05,
+        marginLeft: deviceWidth * 0.07,
     },
     
     text: {
-        margin: 160,
+        marginTop: 10,
+        alignSelf: 'center',
         fontFamily: 'Teko',
         fontSize: 22,
         color: '#b3b3b3',
         textShadowColor: '#b3b3b3',
         textShadowRadius: 1,
-        marginTop: 5,
+        textDecorationLine: 'underline',
     }
 
 });

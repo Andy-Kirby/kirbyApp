@@ -1,18 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default function Welcome({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <MaterialIcons style={styles.burger}
+                <MaterialIcons
+                style={styles.burger}
                 name="menu"
                 size={24}
                 color="#b3b3b3"
                 onPress={() => navigation.toggleDrawer()}
                 />
-                <MaterialIcons style={styles.basket}
+                <MaterialIcons
+                    style={styles.basket}
                     name="shopping-cart"
                     size={24}
                     color="#b3b3b3"
@@ -21,7 +26,7 @@ export default function Welcome({ navigation }) {
             </View>
             <Text style={styles.headerText}>WELCOME!</Text>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -34,7 +39,7 @@ const styles = StyleSheet.create({
 
     headerText: {
         marginTop: 10,
-        marginStart: 180,
+        alignSelf: 'center',
         fontFamily: 'Teko',
         fontSize: 22,
         color: '#b3b3b3',
@@ -46,16 +51,17 @@ const styles = StyleSheet.create({
 
     header: {
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        //justifyContent: 'flex-end'
     },
 
     burger: {
-        marginTop: 60,
-        marginEnd: 270,
+        marginTop: deviceHeight * 0.05,
+        marginLeft: deviceWidth * 0.07,
+        //marginEnd: 270,
     },
     
     basket: {
-        marginTop: 60,
-        marginEnd: 50,
+        marginTop: deviceHeight * 0.05,
+        marginLeft: deviceWidth * 0.72,
     },
 });

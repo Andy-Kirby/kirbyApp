@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Navigator from './routes/drawer';
@@ -8,8 +7,8 @@ import Navigator from './routes/drawer';
 
 const getFonts = () => {
   return Font.loadAsync({
-    'Teko': require('./assets/fonts/Teko-Regular.ttf'),
-  })
+    Teko: require('./assets/fonts/Teko-Regular.ttf'),
+  });
 };
 
 export default function App() {
@@ -25,6 +24,6 @@ export default function App() {
         startAsync={getFonts}
         onFinish={() => setFontsLoaded(true)}
       />
-    )
+    );
   }
-};
+}

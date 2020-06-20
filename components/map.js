@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 export default class App extends React.Component {
     render() {
-        return(
-            <MapView style={styles.map}
+        return (
+            <MapView 
+                style={styles.map}
                 initialRegion={{
                 latitude: 53.729574,
                 longitude: -1.659589,
@@ -18,8 +22,8 @@ export default class App extends React.Component {
                 latitude: 53.729574,
                 longitude: -1.659589
                 }}
-                title={"We are here..."}
-                description={"2 The Crossings, WF17 0NE"}
+                title={'We are here...'}
+                description={'2 The Crossings, WF17 0NE'}
             />
             </MapView>    
         );
@@ -28,11 +32,14 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     map: {
-        width: 300,
-        height: 300,
-        borderWidth: 4,
-        borderColor: "grey",
-        borderRadius: 6,
+        //width: 300,
+        //height: 300,
+        width: deviceWidth * 0.82,
+        //marginRight: deviceWidth * 0.12,
+        height: deviceHeight * 0.34,
+        //borderWidth: 4,
+        //borderColor: 'grey',
+        //borderRadius: 6,
     }
 }
-)
+);
